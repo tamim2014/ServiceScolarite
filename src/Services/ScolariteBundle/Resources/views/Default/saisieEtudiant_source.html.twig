@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+
+{% block head %}
+    {% block stylesheets %}
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/servicesscolarite/css/essai2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/servicesscolarite/css/bootstrap.min.css') }}" />
+
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <!-- <?php require_once ("entete.php"); ?>  comment faire cet include avec twig -->
+    <div class=" navbar navbar-inverse navbar-fixed-top">
+        <ul class=" nav navbar-nav">
+            <li><a href="{{ path('afficherListEleves') }}">Etudiant</a></li>
+            <li><a href="{{ path('saisirEleves') }}">Saisie</a></li>
+            <li><a href="LogOut.php">LogOut</a></li>
+        </ul>
+    </div>
+    <div class="container  decalerEnBas  ">
+
+
+            <div class="col-md-12  col-xs-12  ">
+                {# {% form_theme f 'bootstrap_4_layout.html.twig' %} #}
+                <!-- <div style="margin-left:20px;" class="form-control-feedback"> le formulaire à droite de la table -->
+                <div  class="form-group-lg  form-control-static   panel panel-" >
+
+                    {{ form_start(f) }}
+                    <table  >
+                        <div class="form-group" >
+                            <tr >
+                              <!--  <td class="control-label">{{ form_label(f.cODE,'Code ') }}</td> -->
+                                <td>{{ form_widget(f.cODE) }}</td>
+                                <td>{{ form_errors(f.cODE)}}</td>
+                                <td>{{ form_enctype(f.cODE)}}</td>
+                            </tr>
+                        </div>
+                        <div class="form-group" >
+                            <tr >
+                             <!--    <td class="control-label">{{ form_label(f.nomEleve,'Nom ') }}</td> -->
+                                <td>{{ form_widget(f.nomEleve) }}</td>
+                                <td>{{ form_errors(f.nomEleve)}}</td>
+                                <td>{{ form_enctype(f.nomEleve)}}</td>
+                            </tr>
+                        </div>
+                        <div class="form-group" >
+                            <tr>
+                              <!--   <td class="control-label">{{ form_label(f.emailEleve,'Email') }}</td> -->
+                                <td>{{ form_widget(f.emailEleve) }}</td>
+                                <td>{{ form_errors(f.emailEleve)}}</td>
+                                <td>{{ form_enctype(f.emailEleve)}}</td>
+                            </tr >
+                        </div>
+                        <div class="form-group" >
+                            <tr >
+                              <!--   <td class="control-label" >{{ form_label(f.photoEleve,'Photo  ') }}</td> -->
+                                <td>{{ form_widget(f.photoEleve) }}</td>
+                                <td>{{ form_errors(f.photoEleve)}}</td>
+                                <td>{{ form_enctype(f.photoEleve)}}</td>
+                            </tr>
+                        </div>
+                    </table>
+                    {{ form_end(f) }}
+                </div>
+
+
+
+                <div class="panel  panel-info " >
+                Etablissement:Public/Privé
+                    <div class="panel-heading">Liste de élèves</div>
+                        <div class="panel-body">
+
+                            <table id="test2" class="table  table-striped">
+                                <tr>
+                                    <th>CODE</th><th>NOM</th><th>EMAIL</th><th>PHOTO</th><th></th><th></th>
+                                </tr>
+                                {% for elv in listedeseleves %}
+                                    <tr>
+                                        <td>{{ elv.cODE }}</td>
+                                        <td>{{ elv.nomEleve }}</td>
+                                        <td>{{ elv.emailEleve }}</td>
+                                        <!--<td><img src="images/{{ elv.photoEleve }}" width="40" height="30"/></td> -->
+                                        <td><img src="{{asset('bundles/servicesscolarite/images/'~elv.photoEleve) }}" width="40" height="30"/></td>
+                                        <td><a href="editEtudiant.php?code={{ elv.cODE }} ">Edit</a></td>
+                                        <td><a onclick="return confirm('Etes vous sûr...?')" href="supprimEtudiant.php?code={{ elv.cODE }}">Supprimer</a></td>
+
+
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

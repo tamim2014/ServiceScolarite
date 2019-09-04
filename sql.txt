@@ -1,0 +1,23 @@
+Re construire la base du projet scolarite a partir des entites
+- Le nom des champs(colone) se trouve dans les enties
+- Le nom de la base se trouve dans  app/config/parameters.yml
+
+Entie Eleve:
+ * @ORM\Column(name="id", type="integer")
+ * @ORM\Column(name="CODE", type="integer")
+ * @ORM\Column(name="nomEleve", type="string", length=30)
+ * @ORM\Column(name="emailEleve", type="string", length=30)
+ * @ORM\Column(name="photoEleve", type="string", length=30)
+
+Comment recuperer cet entite depuis la base de donnee service_scolarite?
+
+DOCRINE2
+
+1.Generer une base de donnee
+> php app/console                                                                  doctrine:database:create
+
+2.Generer les requetes sql des tables ( on va juste construire les requete sql)
+>php app/console                                                                   doctrine:schema:update --dump-sql
+
+3.Exécuter les  requêtes generes 
+>php app/console                                                                   doctrine:schema:update --force

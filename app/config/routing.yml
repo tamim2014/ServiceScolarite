@@ -1,0 +1,5 @@
+services_scolarite:
+    resource: "@ServicesScolariteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

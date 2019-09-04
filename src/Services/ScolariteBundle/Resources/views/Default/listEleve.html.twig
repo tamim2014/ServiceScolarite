@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+{% block head %}
+    {% block stylesheets %}
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/servicesscolarite/css/essai2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/servicesscolarite/css/bootstrap.min.css') }}" />
+
+    {% endblock %}
+{% endblock %}
+
+
+{% block body %}
+    <!-- <?php require_once ("entete.php"); ?>  comment faire cet include avec twig -->
+    <div class=" navbar navbar-inverse navbar-fixed-top">
+        <ul class=" nav navbar-nav">
+            <li><a href="{{ path('afficherListEleves') }}">Etudiant</a></li>
+            <li><a href="{{ path('saisirEleves') }}">Saisie</a></li>
+            <li><a href="LogOut.php">LogOut</a></li>
+        </ul>
+    </div>
+    <div class="col-md-12  col-xs-12  decalerEnBas">
+
+        <div class="panel  panel-info EspaceHaut">
+            Etablissement:Public/Privé
+            <div class="panel-heading">Liste de élèves</div>
+                <div class="panel-body">
+                                <table  id="test2" class="table  table-striped">
+                                    <tr>
+                                        <th>CODE</th><th>NOM</th><th>EMAIL</th><th>PHOTO</th>
+                                    </tr>
+                                    {% for e in eleves %}
+                                        <tr>
+                                            <td>{{ e.cODE }}</td>
+                                            <td>{{ e.nomEleve }}</td>
+                                            <td>{{ e.emailEleve }}</td>
+                                            <td> {{ e.photoEleve }} </td>
+                                            <!-- <td><img src="{{ e.photoEleve }}"  > </td> -->
+                                            <!-- <td><a href="{{ path('afficherListEleves',{'photoEleve':e.photoEleve} ) }}"><img src="{{ asset('bundles/servicesscolarite/images/'~e.photoEleve) }}" alt="" > </a> </td> -->
+
+                                        </tr>
+                                    {% endfor %}
+
+                                </table>
+                </div>
+            </div>
+        </di>
+    </div>
+{% endblock %}

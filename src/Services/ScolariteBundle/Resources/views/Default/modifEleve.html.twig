@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+{% block head %}
+    {% block stylesheets %}
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/servicesscolarite/css/essai2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/servicesscolarite/css/bootstrap.min.css') }}" />
+
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <div class="decalerEnBas">
+        <!-- LE MENU HORIZONTAL -->
+        <!-- <?php require_once ("entete.php"); ?>  comment faire cet include avec twig -->
+        <div class=" navbar navbar-inverse navbar-fixed-top">
+            <ul class=" nav navbar-nav">
+                <li><a href="{{ path('afficherListEleves') }}">Etudiant</a></li>
+                <li><a href="{{ path('saisirEleves') }}">Saisie</a></li>
+                <li><a href="LogOut.php">LogOut</a></li>
+            </ul>
+        </div>
+
+    <!-- LE FORMULAIRE DE MISE A JOUR -->
+        <div class="container decalerEnBas col-md-6 col-x-12 col-md-offset-3 ">
+            <div class="panel panel-default  " >
+                <div class="panel-heading  ">Saisie des Elèves</div>
+                <div class="panel-body">
+                        {{ form_start(f) }}
+                            <!-- poser ici une coditie if (cODE== $_GET['code']) -->
+
+                                            <div  class="form-group">
+                                                {{ form_label(f.nomEleve,'Code: ') }}
+                                                {{ form_widget(f.cODE) }}
+                                            </div>
+
+                                           <div  class="form-group">
+                                               {{ form_label(f.nomEleve,'Nom: ') }}
+                                               {{ form_widget(f.nomEleve) }}
+
+                                           </div>
+
+                                           <div  class="form-group">
+                                               {{ form_label(f.nomEleve,'Email: ') }}
+                                               {{ form_widget(f.emailEleve) }}
+
+                                           </div>
+
+                                           <div  class="form-group">
+                                               {{ form_label(f.nomEleve,'Photo: ') }}
+                                               {{ form_widget(f.photoEleve) }}
+                                           </div>
+
+                            <!-- fin du if -->
+                       {{ form_end(f) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

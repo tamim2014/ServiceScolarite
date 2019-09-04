@@ -1,0 +1,10 @@
+
+
+/* i fo pas coller  la table avec le top de l 'ecran */
+.EspaceHaut{
+    margin-top: 20px;
+}
+/* i fo pas coller  la table avec la barre de navigation */
+.decalerEnBas {
+    margin-top: 60px;
+}
